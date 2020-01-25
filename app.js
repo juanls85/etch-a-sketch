@@ -22,6 +22,10 @@ function etch(num) {
 
   divList.forEach(div => div.addEventListener("pointerover", function (e) {
     e.target.style.backgroundColor = `rgb(${randoValue()}, ${randoValue()}, ${randoValue()})`;
+  }));
+
+  divList.forEach(div => div.addEventListener("touchmove", function (e) {
+    e.target.style.backgroundColor = `rgb(${randoValue()}, ${randoValue()}, ${randoValue()})`;
   }))
 }
 
