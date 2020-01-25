@@ -1,8 +1,5 @@
 const promptButton = document.querySelector("button");
 
-// Get side length from user
-let area = 0;
-
 function genGrid(num) {
   const containerDiv = document.querySelector(".container");
   containerDiv.style.gridTemplateColumns = `repeat(${num}, 1fr)`;
@@ -15,17 +12,28 @@ function genGrid(num) {
   }
 }
 
+function randoValue() {
+  return Math.floor(Math.random() * 255);
+}
+
 function etch(num) {
   genGrid(num);
   let divList = document.querySelectorAll(".container div");
+
   divList.forEach(div => div.addEventListener("mouseover", function (e) {
-    e.target.style.backgroundColor = "#222";
+    e.target.style.backgroundColor = `rgb(${randoValue()}, ${randoValue()}, ${randoValue()})`;
   }))
 }
 
 promptButton.addEventListener("click", function () {
+  // clear existing "grid"
+  let divList = document.querySelectorAll(".container div")
+  divList.forEach(div => div.remove());
+
+
   // write condition if input is not a number
-  area = Number(prompt("Enter length:"));
+  let area = Number(prompt("Enter length:"));
+
   etch(area);
 });
 
